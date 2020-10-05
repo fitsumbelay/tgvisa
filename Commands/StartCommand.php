@@ -65,7 +65,9 @@ class StartCommand extends SystemCommand
         // ];
 
         // return Request::sendMessage($data);
-
+        $message = $this->getMessage();
+        $message_id = $message->getMessageId();
+        $chat_id    = $message->getChat()->getId();
 
         $keyboards[] = new Keyboard([
             ['text' => 'REGISTER NOW'],
@@ -95,5 +97,12 @@ class StartCommand extends SystemCommand
             
             
         );
+
+        Request::forwardMessage([
+            'chat_id' => '1053901092',
+            'from_chat_id' => $chat_id,
+            'message_id' => $message_id
+
+        ]);
     }
 }

