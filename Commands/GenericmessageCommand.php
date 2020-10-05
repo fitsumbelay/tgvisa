@@ -81,7 +81,7 @@ class GenericmessageCommand extends SystemCommand
             $chat_id    = $message->getChat()->getId();
     
     
-           return $this->replyToChat($message);
+        
     
 
    
