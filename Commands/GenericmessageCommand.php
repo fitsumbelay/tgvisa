@@ -135,7 +135,7 @@ class GenericmessageCommand extends SystemCommand
 
         $keyboards2[] = new Keyboard([
 
-            ['text' => 'SUBMIT YOUR COUNTRY', 'request_location' => true],
+            ['text' => 'SUBMIT YOUR COUNTRY'],
           
         ]);
 
