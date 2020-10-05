@@ -83,6 +83,7 @@ class GenericmessageCommand extends SystemCommand
            return $this->replyToChat($message);
         }
 
+        return $this->replyToChat($message);
        
 
         // if ($chat_id == '1053901092') {
