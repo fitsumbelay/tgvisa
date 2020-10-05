@@ -12,8 +12,8 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Add you bot's API key and name
-$bot_api_key  = '1019155897:AAGSvs1RlZYXAv1r0X2OGPK0sRRkgZt_GxQ';
-$bot_username = 'seferpromobot';
+$bot_api_key  = '1287967321:AAHDgmxXyahcbA99ixRyeTRTUZ-fG1A4rb4';
+$bot_username = 'visatelegrambot';
 
 // Define all IDs of admin users in this array (leave as empty array if not used)
 $admin_users = [
