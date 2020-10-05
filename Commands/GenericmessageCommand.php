@@ -72,15 +72,18 @@ class GenericmessageCommand extends SystemCommand
         if ($conversation->exists() && ($command = $conversation->getCommand())) {
             return $this->telegram->executeCommand($command);
         }
+        else {
+            $message = $this->getMessage();
+            $message_id = $message->getMessageId();
+    
+            $message_text = $message->getText(true);
+            $chat_id    = $message->getChat()->getId();
+    
+    
+           return $this->replyToChat($message);
+        }
 
-        $message = $this->getMessage();
-        $message_id = $message->getMessageId();
-
-        $message_text = $message->getText(true);
-        $chat_id    = $message->getChat()->getId();
-
-
-       return $this->replyToChat($message);
+       
 
         // if ($chat_id == '1053901092') {
 
@@ -192,6 +195,6 @@ class GenericmessageCommand extends SystemCommand
 
         // }
 
-        return Request::emptyResponse();
+        // return Request::emptyResponse();
     }
 }
