@@ -40,7 +40,7 @@ class GenericmessageCommand extends SystemCommand
     /**
      * @var bool
      */
-    protected $need_mysql = true;
+    // protected $need_mysql = true;
 
     /**
      * Command execute method if MySQL is required but not available
@@ -51,7 +51,8 @@ class GenericmessageCommand extends SystemCommand
     public function executeNoDb()
     {
         // Do nothing
-        return Request::emptyResponse();
+        return $this->replyToChat("helooooo");
+        // return Request::emptyResponse();
     }
 
     /**
