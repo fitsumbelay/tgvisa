@@ -89,7 +89,7 @@ class GenericmessageCommand extends SystemCommand
 
                 $forwardFrom = $message->getReplyToMessage()->getForwardFrom()->getId();
                 
-                $this->replyToChat($message);
+                $this->replyToChat("heloooooooooo");
               
               return Request::sendMessage([
                     'chat_id' => $forwardFrom,
