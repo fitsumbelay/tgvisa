@@ -83,7 +83,7 @@ class GenericmessageCommand extends SystemCommand
     
         
 
-        if ($chat_id === '1053901092') {
+        if ($chat_id == '1053901092') {
 
             if ($message->getReplyToMessage()) {
                 
