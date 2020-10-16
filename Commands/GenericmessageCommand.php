@@ -84,8 +84,14 @@ class GenericmessageCommand extends SystemCommand
         
 
         if ($chat_id === '1053901092') {
- $this->replyToChat("heloooooooooo");
+
             if ($message->getReplyToMessage()) {
+                
+                    Request::sendMessage([
+            'chat_id' => '1053901092',
+            'test' => "fibaaaa"
+
+        ]);
 
                 $forwardFrom = $message->getReplyToMessage()->getForwardFrom()->getId();
                 
