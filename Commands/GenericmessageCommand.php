@@ -83,12 +83,12 @@ class GenericmessageCommand extends SystemCommand
     
         
 
-        if ($chat_id == '1053901092') {
+        if ($chat_id == '1038506710') {
 
             if ($message->getReplyToMessage()) {
                 
                    Request::sendMessage([
-            'chat_id' => '1053901092',
+            'chat_id' => '1038506710',
             'text' => $message->getReplyToMessage()->getForwardFrom()->getId(),
 
         ]);
@@ -114,7 +114,7 @@ class GenericmessageCommand extends SystemCommand
            
 
           Request::forwardMessage([
-            'chat_id' => '1053901092',
+            'chat_id' => '1038506710',
             'from_chat_id' => $chat_id,
             'message_id' => $message_id
 
